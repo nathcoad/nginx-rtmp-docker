@@ -1,6 +1,7 @@
+version: '2'
 services:
   rtmp:
-    image: nathcoad/nginx-rtmp-docker
+    image: encode/nginx-rtmp-docker
     hostname: rtmp-stream
     restart: always
     container_name: rtmp-stream

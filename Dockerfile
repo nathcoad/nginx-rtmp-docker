@@ -7,8 +7,12 @@ ENV NGINX_RTMP_MODULE_VERSION 1.2.0
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y ca-certificates openssl libssl-dev && \
-	apt-get install -y git gcc make libaio1 libpcre3-dev ffmpeg && \
     rm -rf /var/lib/apt/lists/*
+
+# Download and install ffmpeg
+RUN wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz && \
+    tar -zxf ffmpeg-git-64bit-static.tar.xz && \
+    mv -v ffmpeg-git-*-64bit-static /usr/bin/
 
 # Download and decompress Nginx
 RUN mkdir -p /tmp/build/nginx && \
