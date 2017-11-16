@@ -3,6 +3,7 @@ FROM buildpack-deps:jessie
 # Versions of Nginx and nginx-rtmp-module to use
 ENV NGINX_VERSION nginx-1.13.0
 ENV NGINX_RTMP_MODULE_VERSION 1.2.0
+ENV PASSWORD test
 
 # Install dependencies
 RUN apt-get update && \
@@ -52,9 +53,9 @@ RUN cd /tmp/build/nginx/${NGINX_VERSION} && \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
-# Set up config file
-COPY ./nginx.conf /etc/nginx/nginx.conf
-RUN sed -i -e 's@PASSWORDTOKEN@'"${PASSWORD}"'@' /etc/nginx/nginx.conf
+# Copy configuration files into container
+COPY entrypoint.sh /entrypoint.sh
+COPY nginx.conf /nginx.conf
 
 #Add persistent storage
 VOLUME ["/config"]
@@ -64,4 +65,5 @@ VOLUME ["/wwwroot"]
 
 EXPOSE 1935
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "/root/entrypoint.sh"]
