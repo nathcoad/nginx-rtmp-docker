@@ -11,8 +11,8 @@ RUN apt-get update && \
 
 # Download and install ffmpeg
 RUN wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz && \
-    tar -zxf ffmpeg-git-64bit-static.tar.xz && \
-    mv -v ffmpeg-git-*-64bit-static /usr/bin/
+    tar -xJf ffmpeg-git-64bit-static.tar.xz && \
+    mv -v ffmpeg-git-*-64bit-static /usr/bin/ffmpeg
 
 # Download and decompress Nginx
 RUN mkdir -p /tmp/build/nginx && \
@@ -53,8 +53,15 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Set up config file
+COPY ./nginx.conf /config/nginx.conf
 RUN sed -i -e 's@PASSWORDTOKEN@'"${PASSWORD}"'@' /config/nginx.conf
 COPY /config/nginx.conf /etc/nginx/nginx.conf
+
+#Add persistent storage
+VOLUME ["/config"]
+VOLUME ["/recordings"]
+VOLUME ["/hls"]
+VOLUME ["/wwwroot"]
 
 EXPOSE 1935
 EXPOSE 80
