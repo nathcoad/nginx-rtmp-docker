@@ -53,9 +53,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Set up config file
-COPY ./nginx.conf /config/nginx.conf
-RUN sed -i -e 's@PASSWORDTOKEN@'"${PASSWORD}"'@' /config/nginx.conf
-COPY /config/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
+RUN sed -i -e 's@PASSWORDTOKEN@'"${PASSWORD}"'@' /etc/nginx/nginx.conf
 
 #Add persistent storage
 VOLUME ["/config"]
