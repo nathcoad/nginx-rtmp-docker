@@ -1,0 +1,22 @@
+stream:
+  rtmp:
+    image: nathcoad/nginx-rtmp-docker
+    hostname: rtmp-stream
+    restart: always
+    container_name: rtmp-stream
+    volumes:
+      - ./nginx.conf:/config/nginx.conf
+      - ./recordings:/recordings
+      - ./hls:/hls      
+      - ./wwwroot:/usr/local/www
+    environment:
+      PASSWORD: p@ssw0rd
+    ports:
+      - 80:80/tcp
+      - 1935:1935	
+    links:
+      - php
+php:
+    image: php:7-fpm
+    volumes:
+      - ./wwwroot:/usr/local/www

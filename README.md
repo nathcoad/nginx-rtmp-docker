@@ -1,22 +1,20 @@
 ## Supported tags and respective `Dockerfile` links
 
-* [`latest` _(Dockerfile)_](https://github.com/tiangolo/nginx-rtmp-docker/blob/master/Dockerfile)
+* [`latest` _(Dockerfile)_](https://github.com/nathcoad/nginx-rtmp-docker/blob/master/Dockerfile)
 
 # nginx-rtmp
 
-[**Docker**](https://www.docker.com/) image with [**Nginx**](http://nginx.org/en/) using the [**nginx-rtmp-module**](https://github.com/arut/nginx-rtmp-module) module for live multimedia (video) streaming.
+[**Docker**](https://www.docker.com/) image with [**Nginx**](http://nginx.org/en/) using the [**nginx-rtmp-module**](https://github.com/arut/nginx-rtmp-module) module for live multimedia (video) streaming and php for authentication.
 
 ## Description
 
 This [**Docker**](https://www.docker.com/) image can be used to create an RTMP server for multimedia / video streaming using [**Nginx**](http://nginx.org/en/) and [**nginx-rtmp-module**](https://github.com/arut/nginx-rtmp-module), built from the current latest sources (Nginx 1.11.3 and nginx-rtmp-module 1.1.9).
 
-This was inspired by other similar previous images from [dvdgiessen](https://hub.docker.com/r/dvdgiessen/nginx-rtmp-docker/), [jasonrivers](https://hub.docker.com/r/jasonrivers/nginx-rtmp/), [aevumdecessus](https://hub.docker.com/r/aevumdecessus/docker-nginx-rtmp/) and by an [OBS Studio post](https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/).
+Forked from <https://hub.docker.com/r/tiangolo/nginx-rtmp/>
 
-The main purpose (and test case) to build it was to allow streaming from [**OBS Studio**](https://obsproject.com/) to different clients at the same time.
+**GitHub repo**: <https://github.com/nathcoad/nginx-rtmp-docker>
 
-**GitHub repo**: <https://github.com/tiangolo/nginx-rtmp-docker>
-
-**Docker Hub image**: <https://hub.docker.com/r/tiangolo/nginx-rtmp/>
+**Docker Hub image**: <https://hub.docker.com/r/encode/>
 
 ## Details
 
@@ -26,14 +24,14 @@ The main purpose (and test case) to build it was to allow streaming from [**OBS 
 * For the simplest case, just run a container with this image:
 
 ```bash
-docker run -d -p 1935:1935 --name nginx-rtmp tiangolo/nginx-rtmp
+docker-compose -f compose.yml up
 ```
 
 ## How to test with OBS Studio and VLC
 
 
 * Run a container with the command above
-
+* Modify OBS config for authentication
 
 * Open [OBS Studio](https://obsproject.com/)
 * Click the "Settings" button
