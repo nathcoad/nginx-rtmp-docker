@@ -11,9 +11,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and install ffmpeg
-RUN wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz && \
+RUN mkdir -p /tmp/build/ffmpeg && \
+    cd /tmp/build/ffmpeg && \
+    wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz && \
     tar -xJf ffmpeg-git-64bit-static.tar.xz && \
-    mv -v ffmpeg-git-*-64bit-static /usr/bin/ffmpeg
+    mv -v ffmpeg-git-*-64bit-static/ff* /usr/bin/
 
 # Download and decompress Nginx
 RUN mkdir -p /tmp/build/nginx && \
