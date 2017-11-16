@@ -49,7 +49,9 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Set up config file
+RUN sed -i -e 's@PASSWORDTOKEN@'"${PASSWORD}"'@' /config/nginx.conf
 COPY /config/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 1935
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
