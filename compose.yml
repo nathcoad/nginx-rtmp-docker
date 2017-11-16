@@ -2,7 +2,7 @@ version: '2'
 services:
   rtmp:
     image: encode/nginx-rtmp-docker
-    hostname: rtmp-stream
+    hostname: rtmpstream.coadcorp.com
     restart: always
     container_name: rtmp-stream
     volumes:
@@ -15,9 +15,3 @@ services:
     ports:
       - 80:80/tcp
       - 1935:1935
-#    links:
-#      - php
-#php:
-#    image: php:7-fpm
-#    volumes:
-#      - ./wwwroot:/usr/local/www
