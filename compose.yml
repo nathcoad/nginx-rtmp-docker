@@ -14,9 +14,9 @@ stream:
     ports:
       - 80:80/tcp
       - 1935:1935	
-    links:
-      - php
-php:
-    image: php:7-fpm
-    volumes:
-      - ./wwwroot:/usr/local/www
+#    links:
+#      - php
+#php:
+#    image: php:7-fpm
+#    volumes:
+#      - ./wwwroot:/usr/local/www
