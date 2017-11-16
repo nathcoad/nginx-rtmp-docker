@@ -66,4 +66,4 @@ VOLUME ["/wwwroot"]
 EXPOSE 1935
 EXPOSE 80
 #CMD ["nginx", "-g", "daemon off;"]
-CMD ["sh", "/root/entrypoint.sh"]
+CMD ["sh", "/entrypoint.sh"]
