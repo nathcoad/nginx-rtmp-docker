@@ -14,39 +14,36 @@
   <script src="https://unpkg.com/video.js@5.16.0/dist/video.js"></script>
   <script src="https://unpkg.com/videojs-contrib-hls@4.1.1/dist/videojs-contrib-hls.js"></script>
 
-  <link href="video-js.css" rel="stylesheet">
-  <script src="video.js"></script>
-  <script src="videojs-contrib-hls.min.js"></script>
-  -->
-  <!-- Customise stylesheet at https://jsfiddle.net/onigetoc/4px6c6kd/ -->
   <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
   <script src="https://unpkg.com/video.js/dist/video.js"></script>
   <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 
+  <link href="video-js.css" rel="stylesheet">
+  <script src="video.js"></script>
+  <script src="videojs-contrib-hls.min.js"></script>
+  -->
+  <!-- Customise stylesheet at http://www.scriptsmashup.com/Video_Skin_Generator/Videojs/videojs-skin-generator.html-->
+  <link href="/custom-video-js.css" rel="stylesheet">
+  <script src="/video.min.js"></script>
+  <script src="/videojs-contrib-hls.min.js"></script>
+
   <script type="text/javascript">
     window.onload = function() {
-      var myPlayer = videojs("example_video_1", {}, function() {
-        console.log("here");
-	//var err = this.on('error', function(e){
-	//  console.log("error");
-	//});
-        
-	   //this.player().on('error', function() {
-	//	console.log("error");
-	      //console.log(e);
-	      // e.stopImmediatePropagation();
-	//	var error = this.player().error();
-	//	console.log('error!', error.code, error.type , error.message);
-	//});         
+      var myPlayer = videojs("example_video_1", {}, function() {      
       });
-
 };
   </script>
 </head>
 <body>
-<video id="example_video_1" controls="" class="video-js vjs-default-skin">
-    <source src="http://10.0.1.25/hls/Test.m3u8" type="application/x-mpegURL">
+<h1>Video.js Example Embed</h1>
+<video id="my_video_1" class="video-js" controls preload="auto" width="720" height="400" data-setup='{"poster" : "riverwood.jpg"}'>
+  <source src="/hls/Test.m3u8" type="application/x-mpegURL">
 </video>
+<!--
+<video id="example_video_1" controls="" class="video-js vjs-default-skin">
+    <source src="/hls/Test.m3u8" type="application/x-mpegURL">
+</video>
+-->
 <!-- 
 <h1>Video.js Example Embed</h1>
   <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="720" height="400" data-setup='{"poster" : "riverwood.jpg"}'>
