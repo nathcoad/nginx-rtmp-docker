@@ -13,7 +13,7 @@ stream:
       PASSWORD: p@ssw0rd
     ports:
       - 80:80/tcp
-      - 1935:1935	
+      - 1935:1935
 #    links:
 #      - php
 #php:
