@@ -1,4 +1,4 @@
-stream:
+services:
   rtmp:
     image: nathcoad/nginx-rtmp-docker
     hostname: rtmp-stream
